@@ -71,7 +71,8 @@ function getProps(props) {
 		current_folder: currentFolder,
 		cmsEvents: {},
 		initial_folder: initialFolder,
-		name: $('.asset-gallery').data('asset-gallery-name')
+		name: $('.asset-gallery').data('asset-gallery-name'),
+		route: '/assets'
 	};
 
 	return $.extend(true, defaults, props);

@@ -303,7 +303,8 @@ function getProps(props) {
 		current_folder: currentFolder,
 		cmsEvents: {},
 		initial_folder: initialFolder,
-		name: (0, _jQuery2['default'])('.asset-gallery').data('asset-gallery-name')
+		name: (0, _jQuery2['default'])('.asset-gallery').data('asset-gallery-name'),
+		route: '/assets'
 	};
 
 	return _jQuery2['default'].extend(true, defaults, props);
