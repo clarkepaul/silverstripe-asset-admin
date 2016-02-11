@@ -3,6 +3,10 @@ var gulp = require('gulp'),
 	babelify = require('babelify'),
 	source = require('vinyl-source-stream'),
 	sass = require('gulp-sass'),
+	gulpif = require('gulp-if'),
+	uglify = require('gulp-uglify'),
+	buffer = require('vinyl-buffer'),
+	watchify = require('watchify'),
 	packageJSON = require('./package.json'),
 	semver = require('semver'),
 	notify = require('gulp-notify');
@@ -25,11 +29,15 @@ if (!nodeVersionIsValid) {
 	process.exit();
 }
 
+// Default Node environment to production.
+process.env.NODE_ENV = isDev ? 'development' : 'production';
+
 if (isDev) {
 	browserifyOptions.debug = true;
+	browserifyOptions.plugin = [watchify];
 }
 
-gulp.task('js', function () {
+gulp.task('js', function bundleJavaScript() {
 	return browserify(browserifyOptions)
 		.transform(babelify)
 		.external('react')
@@ -43,8 +51,11 @@ gulp.task('js', function () {
 		.external('redux-thunk')
 		.external('page.js')
 		.bundle()
+		.on('update', bundleJavaScript)
 		.on('error', notify.onError({ message: 'Error: <%= error.message %>' }))
 		.pipe(source('bundle.js'))
+		.pipe(buffer())
+		.pipe(gulpif(!isDev, uglify()))
 		.pipe(gulp.dest(PATHS.JAVASCRIPT_DIST));
 });
 
