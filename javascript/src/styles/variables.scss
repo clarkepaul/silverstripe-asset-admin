@@ -1,12 +1,11 @@
-$transition-speed: .3s;
-$selectedColor: #29abe2;
+// Variables for the AssetAdmin module
 
-$breakpoint-xxxsmall: 40.625em;
-$breakpoint-xxsmall: 51.25em;
-$breakpoint-xsmall: 63.25em;
-$breakpoint-small: 75.5em;
-$breakpoint-medium: 88em;
-$breakpoint-large: 100.5em;
-$breakpoint-xlarge: 113em;
-$breakpoint-xxlarge: 125.5em;
-$breakpoint-xxxlarge: 138em;
+$gallery-thumb-width:			176px;
+$gallery-thumb-height:			132px;
+
+$gallery-item-width: 			$gallery-thumb-width + 2; /* include borders */
+$gallery-item-height: 			174px;
+$gallery-title-height:			40px;
+
+$gallery-folder-height:			54px;
+$gallery-folder-title-height:	$gallery-folder-height - 2;

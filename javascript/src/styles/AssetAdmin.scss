@@ -136,7 +136,19 @@
 	}
 
 
-	/* Overides which should eventually not be needed */
+	/* TEMP Overides which should eventually not be needed */
+
+	// Reset some annoying CMS styles.
+	.asset-gallery {
+	    > .left {
+	        display: none !important;
+	    }
+
+	    > .middleColumn {
+	        margin-left: 0;
+	    }
+	}
+
 	.icon-button-group {
 		margin-top: 0;
 	}
@@ -145,6 +157,7 @@
 		border: 0;
 		margin-top: 0;
 	}
+
 	.cms-actions-row {
 		margin-top: 10px;
 

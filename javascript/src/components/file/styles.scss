@@ -1,7 +1,30 @@
 .asset-gallery {
 
 	.cms & p {
-		line-height: 18px;
+		line-height: $line-height;
+	}
+
+	.item--overlay {
+		background: rgba(darken($body-color, 10%), .5);
+		position: absolute;
+		top: 0;
+		right: 0;
+		left: 0;
+		opacity: 0;
+		display: none;
+		transition-property: opacity, background;
+		transition-duration: $transition-speed-mid;
+		color: #fff;
+		border-radius: $border-radius-sm $border-radius-sm 0 0;
+		height: $gallery-thumb-height;
+		width: 100%;
+		font-size: 14px;
+		padding-top: 56px;
+		text-align: center;
+
+		&::before {
+			margin-right: 5px;
+		}
 	}
 
 	.item {
@@ -11,10 +34,10 @@
 		background-color: #fff;
 		border: 1px solid;
 		border-color: #e5e6e9 #dfe0ef #d0d1d5;
-		width: 178px; 
-		border-radius: 2px;
+		width: $gallery-item-width; 
+		border-radius: $border-radius-sm;
 		transition: box-shadow .2s;
-		height: 174px; /* container height */
+		height: $gallery-item-height;
 		
 		&:hover {
 			box-shadow: 0 1px 4px #ddd;
@@ -23,32 +46,34 @@
 
 		.item__thumbnail {
 			height: 132px;
-			width: 176px;
+			width: $gallery-thumb-width;
 			margin: 0 auto;
 			background-repeat: no-repeat;
 			background-position: center center;
 
 			&--large {
 				background-size: cover;
-				border-radius: 2px 2px 0 0;
+				border-radius: $border-radius-sm $border-radius-sm 0 0;
 			}
 		}
 
 		&:hover .item--overlay {
 			opacity: 1;
+			display: block;
 		}
 
 		&--focussed .item--overlay {
 			opacity: 1;
+			display: block;
 		}
 		
 		&--folder {
-			height: 54px;
+			height: $gallery-folder-height;
 
 			.item__thumbnail {
-				background: url(img/folder.png) 12px 16px no-repeat;
-				background-size: 25px 22px;
-				height: 52px;
+				background: url(img/folder.png) 12px 14px no-repeat;
+				background-size: 27px 24px;
+				height: $gallery-folder-height - 2;
 				width: 45px;
 				float: left;
 			}
@@ -56,14 +81,15 @@
 			.item__title {
 				padding: 17px 28px 17px 0;
 				width: 131px;
+				height: $gallery-folder-title-height;
 			} 
 
 			.item__actions__action--select {
-				height: 52px;
+				height: $gallery-folder-title-height;
 				padding-top: 9px;
 			}
 
-			.item--overlay {
+			&:hover  .item--overlay {
 				display: none;
 			}
 		}
@@ -102,46 +128,23 @@
 			border-color: #29abe2;
 
 			.item__actions__action--select {
-				border-color: $selectedColor;
+				border-color: $state-active;
 				color: #fff;
 				opacity: 1;
 
 				&::before {
-					border-color: $selectedColor;
-					background-color: $selectedColor;
+					border-color: $state-active;
+					background-color: $state-active;
 				}
 			}
 		}
 	}
 
-	.item--overlay {
-		background: rgba(56 ,63 ,69 , .5); /* text darken 10%) */
-		position: absolute;
-		top: 0;
-		right: 0;
-		left: 0;
-		opacity: 0;
-		transition-property: opacity, background;
-		transition-duration: $transition-speed;
-		color: #fff;
-		border-radius: 1px 1px 0 0;
-		height: 132px;
-		width: 100%;
-		font-size: 14px;
-		padding-top: 56px;
-		text-align: center;
-
-		&::before {
-			margin-right: 5px;
-		}
-	}
-
-
 	.item__actions__action--select {
 		position: absolute;
 		right: 0;
 		top: 0;
-		height: 40px;
+		height: $gallery-title-height;
 		padding: 8px 10px 6px;
 		color: transparent;
 		margin-bottom: 0;
@@ -153,7 +156,7 @@
 		&::before {
 			border: 1px solid #ddd;
 			background-color: #fff;
-			border-radius: 2px;
+			border-radius: $border-radius-sm;
 			font-size: 14px;
 			padding: 1px;
 		}
@@ -161,7 +164,8 @@
 
 	.item__title {
 		padding: 11px 28px 11px 12px;
-		width: 176px;
+		height: $gallery-title-height;
+		width: $gallery-thumb-width;
 		margin: 0;
 		overflow: hidden;
 		box-sizing: border-box;
@@ -169,8 +173,4 @@
 		white-space: nowrap;
 		position: relative;
 	}
-	.ss-uploadfield-view-allowed-extensions {
-		margin-top: -40px;
-	}
-	
 }
