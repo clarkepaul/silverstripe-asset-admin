@@ -1,6 +1,7 @@
 /* 4px */
 /* 6px */
 /* 2px */
+/* main bg darkened 10% */
 /* include borders */
 @keyframes actionsAdded {
   0% {
@@ -86,6 +87,12 @@
     border: 0; }
   .asset-gallery .gallery__sort .chzn-results .active-result {
     text-transform: capitalize; }
+
+.asset-gallery .gallery__folders {
+  display: inline-block; }
+
+.asset-gallery .gallery__files {
+  display: inline-block; }
 
 .asset-gallery .gallery__load {
   width: 100%;
@@ -314,7 +321,9 @@
     margin-top: 0; }
   .cms .AssetAdmin .field {
     border: 0;
-    margin-top: 0; }
+    margin-top: 0;
+    padding: 0;
+    margin: 0; }
   .cms .AssetAdmin .cms-actions-row {
     margin-top: 10px; }
     .cms .AssetAdmin .cms-actions-row .ss-ui-button {

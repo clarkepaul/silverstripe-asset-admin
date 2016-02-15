@@ -16,7 +16,7 @@ class FileComponent extends SilverStripeComponent {
 		this.onFileNavigate = this.onFileNavigate.bind(this);
 		this.onFileEdit = this.onFileEdit.bind(this);
 		this.onFileDelete = this.onFileDelete.bind(this);
-		this.handleDoubleClick = this.handleDoubleClick.bind(this);
+		this.handleClick = this.handleClick.bind(this);
 		this.handleKeyDown = this.handleKeyDown.bind(this);
 		this.handleFocus = this.handleFocus.bind(this);
 		this.handleBlur = this.handleBlur.bind(this);
@@ -24,11 +24,7 @@ class FileComponent extends SilverStripeComponent {
 		this.onFileSelect = this.onFileSelect.bind(this);
 	}
 
-	handleDoubleClick(event) {
-		// if (event.target !== ReactDOM.findDOMNode(this.refs.title) && event.target !== ReactDOM.findDOMNode(this.refs.thumbnail)) {
-		// 	return;
-		// }
-
+	handleClick(event) {
 		this.onFileNavigate(event);
 	}
 
@@ -153,7 +149,7 @@ class FileComponent extends SilverStripeComponent {
 	}
 
 	render() {
-		return <div className={this.getItemClassNames()} data-id={this.props.id} onClick={this.handleDoubleClick} >
+		return <div className={this.getItemClassNames()} data-id={this.props.id} onClick={this.handleClick} >
 			<div ref="thumbnail" className={this.getThumbnailClassNames()} tabIndex="0" onKeyDown={this.handleKeyDown} style={this.getThumbnailStyles()} onMouseDown={this.preventFocus}>
 				<div className='item--overlay [ font-icon-edit ]'> View
 				</div>
@@ -164,6 +160,7 @@ class FileComponent extends SilverStripeComponent {
 					type='button'
 					title={i18n._t('AssetGalleryField.SELECT')}
 					tabIndex={this.getButtonTabIndex()}
+					onMouseDown={this.preventFocus}
 					onClick={this.onFileSelect}
 					onFocus={this.handleFocus}
 					onBlur={this.handleBlur}>
