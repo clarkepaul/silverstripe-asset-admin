@@ -77,7 +77,7 @@ function getProps(props) {
 	return $.extend(true, defaults, props);
 }
 
-function boot(ctx, next) {
+function boot() {
 	const props = getProps();
 	const store = configureStore(); //Create the redux store
 
@@ -87,8 +87,11 @@ function boot(ctx, next) {
 		</Provider>,
 		$('.asset-gallery-component-wrapper')[0]
 	);
-
-	next();
 }
 
-window.ss.router('/assets', boot);
+window.ss.router('/assets', (ctx, next) => {
+	boot();
+	next();
+});
+
+boot();
