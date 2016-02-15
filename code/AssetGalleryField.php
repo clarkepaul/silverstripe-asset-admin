@@ -21,6 +21,11 @@ class AssetGalleryField extends FormField {
 		'search',
 		'update',
 		'delete',
+		'item',
+	);
+
+	private static $url_handlers = array(
+		'item/$ID/$Action' => 'item',
 	);
 
 	/**
@@ -57,6 +62,10 @@ class AssetGalleryField extends FormField {
 	 */
 	public function Type() {
 		return 'asset-gallery';
+	}
+
+	public function item(SS_HTTPRequest $request) {
+		return $this->getForm()->getController();
 	}
 
 	/**
