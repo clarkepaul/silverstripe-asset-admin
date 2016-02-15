@@ -71,20 +71,24 @@ function getProps(props) {
 		current_folder: currentFolder,
 		cmsEvents: {},
 		initial_folder: initialFolder,
-		name: $('.asset-gallery').data('asset-gallery-name'),
-		route: '/assets'
+		name: $('.asset-gallery').data('asset-gallery-name')
 	};
 
 	return $.extend(true, defaults, props);
 }
 
-let props = getProps();
-const store = configureStore(); //Create the redux store
+function boot(ctx, next) {
+	const props = getProps();
+	const store = configureStore(); //Create the redux store
 
+	ReactDOM.render(
+		<Provider store={store}>
+			<GalleryContainer {...props} />
+		</Provider>,
+		$('.asset-gallery-component-wrapper')[0]
+	);
 
-ReactDOM.render(
-    <Provider store={store}>
-        <GalleryContainer {...props} />
-    </Provider>,
-    $('.asset-gallery-component-wrapper')[0]
-);
+	next();
+}
+
+window.ss.router('/assets', boot);
