@@ -25,9 +25,9 @@ class FileComponent extends SilverStripeComponent {
 	}
 
 	handleDoubleClick(event) {
-		if (event.target !== ReactDOM.findDOMNode(this.refs.title) && event.target !== ReactDOM.findDOMNode(this.refs.thumbnail)) {
-			return;
-		}
+		// if (event.target !== ReactDOM.findDOMNode(this.refs.title) && event.target !== ReactDOM.findDOMNode(this.refs.thumbnail)) {
+		// 	return;
+		// }
 
 		this.onFileNavigate(event);
 	}
@@ -153,39 +153,22 @@ class FileComponent extends SilverStripeComponent {
 	}
 
 	render() {
-		return <div className={this.getItemClassNames()} data-id={this.props.id} onDoubleClick={this.handleDoubleClick}>
-			<div ref="thumbnail" className={this.getThumbnailClassNames()} tabIndex="0" onKeyDown={this.handleKeyDown} style={this.getThumbnailStyles()} onClick={this.onFileSelect} onMouseDown={this.preventFocus}>
-				<div className='item__actions'>
-					<button
-						className='item__actions__action item__actions__action--select [ font-icon-tick ]'
-						type='button'
-						title={i18n._t('AssetGalleryField.SELECT')}
-						tabIndex={this.getButtonTabIndex()}
-						onClick={this.onFileSelect}
-						onFocus={this.handleFocus}
-						onBlur={this.handleBlur}>
-					</button>
-					<button
-						className='item__actions__action item__actions__action--remove [ font-icon-trash ]'
-						type='button'
-						title={i18n._t('AssetGalleryField.DELETE')}
-						tabIndex={this.getButtonTabIndex()}
-						onClick={this.onFileDelete}
-						onFocus={this.handleFocus}
-						onBlur={this.handleBlur}>
-					</button>
-					<button
-						className='item__actions__action item__actions__action--edit [ font-icon-edit ]'
-						type='button'
-						title={i18n._t('AssetGalleryField.EDIT')}
-						tabIndex={this.getButtonTabIndex()}
-						onClick={this.onFileEdit}
-						onFocus={this.handleFocus}
-						onBlur={this.handleBlur}>
-					</button>
+		return <div className={this.getItemClassNames()} data-id={this.props.id} onClick={this.handleDoubleClick} >
+			<div ref="thumbnail" className={this.getThumbnailClassNames()} tabIndex="0" onKeyDown={this.handleKeyDown} style={this.getThumbnailStyles()} onMouseDown={this.preventFocus}>
+				<div className='item--overlay [ font-icon-edit ]'> View
 				</div>
 			</div>
-			<p className='item__title' ref="title">{this.props.title}</p>
+			<div className='item__title' ref="title">{this.props.title}
+				<button
+					className='item__actions__action--select [ font-icon-tick ]'
+					type='button'
+					title={i18n._t('AssetGalleryField.SELECT')}
+					tabIndex={this.getButtonTabIndex()}
+					onClick={this.onFileSelect}
+					onFocus={this.handleFocus}
+					onBlur={this.handleBlur}>
+				</button>
+			</div>
 		</div>;
 	}
 }
