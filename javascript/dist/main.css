@@ -1,7 +1,11 @@
+/* eg. Text, labels, iconography */
+/* eg. Field descriptions */
+/* eg. placeholder text */
+/* eg. iconography hovered */
+/* eg. North bar */
 /* 4px */
 /* 6px */
 /* 2px */
-/* main bg darkened 10% */
 /* include borders */
 @keyframes actionsAdded {
   0% {
@@ -140,10 +144,10 @@
   margin: 0 20px 20px 0;
   background-color: #fff;
   border: 1px solid;
-  border-color: #e5e6e9 #dfe0ef #d0d1d5;
+  border-color: #e5e8eb #d9dee2 #ced3d9;
   width: 178px;
   border-radius: 0.125rem;
-  transition: box-shadow .2s;
+  transition: box-shadow 0.3s;
   height: 174px; }
   .asset-gallery .item:hover {
     box-shadow: 0 1px 4px #ddd;
@@ -248,8 +252,11 @@
       overflow: hidden; }
       .cms .AssetAdmin .cms-content-fields .cms-content-tools .cms-panel-content .cms-search-form {
         height: 100%; }
-  .cms .AssetAdmin .cms-content-toolbar {
+  .cms .AssetAdmin .ss-assetuploadfield,
+  .cms .AssetAdmin .cms-content-toolbar.field {
     margin-bottom: 16px;
+    hight: 52px; }
+  .cms .AssetAdmin .cms-content-toolbar {
     float: left; }
     .cms .AssetAdmin .cms-content-toolbar .cms-actions-row .ss-ui-button {
       z-index: 1; }
@@ -294,9 +301,9 @@
   .cms .AssetAdmin .ss-uploadfield-view-allowed-extensions {
     margin-top: -39px; }
   .cms .AssetAdmin .gallery__bulk-actions {
-    padding: 0 12px;
+    padding: 10px 12px;
     left: 160px;
-    /* Needs to go to 60px when main nav is collapsed */
+    /* TODO: Needs to go to 60px when main nav is collapsed */
     z-index: 1;
     right: 0;
     height: 52px;
@@ -306,13 +313,21 @@
     width: 200px;
     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
     background-color: #f0f2f4;
-    /* northbar bg */
     -webkit-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
     -o-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out; }
-  .cms .AssetAdmin .ss-ui-button.gallery__bulk-actions_action[class*="font-icon-"]::before {
-    font-size: 20px; }
+    .cms .AssetAdmin .gallery__bulk-actions .gallery__bulk-actions_action,
+    .cms .AssetAdmin .gallery__bulk-actions .ss-ui-button {
+      line-height: 1.5;
+      margin-bottom: 0;
+      height: 32px; }
+      .cms .AssetAdmin .gallery__bulk-actions .gallery__bulk-actions_action[class*="font-icon-"]::before,
+      .cms .AssetAdmin .gallery__bulk-actions .ss-ui-button[class*="font-icon-"]::before {
+        font-size: 20px;
+        line-height: 18px;
+        position: relative;
+        top: -1px; }
   .cms .AssetAdmin .asset-gallery > .left {
     display: none !important; }
   .cms .AssetAdmin .asset-gallery > .middleColumn {
@@ -324,6 +339,11 @@
     margin-top: 0;
     padding: 0;
     margin: 0; }
+  .cms .AssetAdmin .ss-ui-button {
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-left: 0;
+    margin-right: 0; }
   .cms .AssetAdmin .cms-actions-row {
     margin-top: 10px; }
     .cms .AssetAdmin .cms-actions-row .ss-ui-button {

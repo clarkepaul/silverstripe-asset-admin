@@ -20,8 +20,13 @@
 		}
 	}
 
-	.cms-content-toolbar {
+	.ss-assetuploadfield,
+	.cms-content-toolbar.field {
 		margin-bottom: 16px;
+		hight: 52px;
+	}
+
+	.cms-content-toolbar {
 		float: left;
 		
 		.cms-actions-row {
@@ -113,8 +118,8 @@
 
 	/* Bulk actions */
 	.gallery__bulk-actions {
-		padding: 0 12px;
-		left: 160px; /* Needs to go to 60px when main nav is collapsed */
+		padding: 10px 12px;
+		left: 160px; /* TODO: Needs to go to 60px when main nav is collapsed */
 		z-index: 1;
 		right: 0;
 		height: 52px;
@@ -123,17 +128,29 @@
 		top: 52px;
 		width: 200px;
 		box-shadow : 0px 1px 2px rgba(0, 0, 0, 0.2);
-		background-color: #f0f2f4; /* northbar bg */
+		background-color: $body-bg-dark;
 
 		-webkit-transition: all 0.5s ease-in-out;
 		-moz-transition: all 0.5s ease-in-out;
 		-o-transition: all 0.5s ease-in-out;
 		transition: all 0.5s ease-in-out;
+
+		.gallery__bulk-actions_action,
+		.ss-ui-button {
+			line-height: $line-height;
+			margin-bottom: 0;
+			height: 32px;
+
+			&[class*="font-icon-"]::before {
+				font-size: 20px;
+				line-height: 18px;
+				position: relative;
+				top: -1px;
+			}
+		}
 	}
 
-	.ss-ui-button.gallery__bulk-actions_action[class*="font-icon-"]::before {
-		font-size: 20px;
-	}
+	
 
 
 	/* TEMP Overides which should eventually not be needed */
@@ -158,6 +175,13 @@
 		margin-top: 0;
 		padding: 0;
 		margin: 0;
+	}
+
+	.ss-ui-button {
+		padding-left: 12px;
+		padding-right: 12px;
+		margin-left: 0;
+		margin-right: 0;
 	}
 
 	.cms-actions-row {
